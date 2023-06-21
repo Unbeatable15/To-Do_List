@@ -8,11 +8,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-let items = [];
-let work_item = [];
+const items = [];
+const work_item = [];
 
 app.get("/",(req,res)=>{
-    let day = date.getDate();
+    const day = date.getDate();
     res.render("list",{listTitle:day,newListItem:items});
 })
 
@@ -22,12 +22,10 @@ app.get("/work",(req,res)=>{
 })
 
 
-app.post("/work",(req,res)=>{
-    
-})
 
 app.post("/",(req,res)=>{
-    let item = req.body.newitem;
+
+    const item = req.body.newitem;
     if(req.body.list === "Work"){
         work_item.push(item);
         res.redirect("/work");
